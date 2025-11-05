@@ -1,0 +1,11 @@
+groups:
+  - name: PanderaAlerts
+    rules:
+      - alert: PanderaSchemaErrorDetected
+        expr: panderas_error > 0
+        for: 10s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Pandera Schema Validation Errors Detected"
+          description: "One or more Pandera checks failed (column={{ $labels.column }}, check={{ $labels.check }})"
