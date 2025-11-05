@@ -1,0 +1,25 @@
+global:
+  # Prometheus expects python app to serve metrics every 5 seconds
+  scrape_interval: 5s
+
+scrape_configs:
+  # Scrape Prometheus itself (default)
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+
+      # Scrape your Pandera metrics
+  - job_name: "pandera_validation"
+    static_configs:
+      - targets: [ "exporter:8000" ]  # Python app exposes this
+
+rule_files:
+  - "alerts.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "alertmanager:9093"
+
