@@ -1,8 +1,8 @@
 global:
   smtp_smarthost: 'smtp.gmail.com:587'
-  smtp_from: 'sahil@catalysts.org'
-  smtp_auth_username: 'sahil@catalysts.org'
-  smtp_auth_password: 'rvll fzpn kxdg gtbz'
+  smtp_from: '<enter your email>'
+  smtp_auth_username: '<enter your email>'
+  smtp_auth_password: '<enter your passowrd>'  #https://myaccount.google.com/apppasswords
   smtp_require_tls: true
 
 route:
@@ -14,5 +14,5 @@ route:
 receivers:
   - name: 'email-alert'
     email_configs:
-      - to: 'sahil@catalysts.org'
+      - to: '<enter your email>'
         send_resolved: true
